@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+
+| Property Name                            | Purpose                                           |
+
+| `hibernate.dialect`                      | Specifies SQL dialect (e.g., MySQL, Oracle)       |
+| `hibernate.connection.driver_class`      | JDBC driver                                       |
+| `hibernate.connection.url`               | Database URL                                      |
+| `hibernate.connection.username`          | DB username                                       |
+| `hibernate.connection.password`          | DB password                                       |
+| `hibernate.show_sql`                     | Prints SQL to console                             |
+| `hibernate.format_sql`                   | Formats SQL output                                |
+| `hibernate.hbm2ddl.auto`                 | Schema auto-generation (`update`, `create`, etc.) |
+| `hibernate.cache.use_second_level_cache` | Enables 2nd-level cache                           |
+| `hibernate.cache.region.factory_class`   | Specifies cache provider                          |
+
+ -->
+
+<!-- search in XML website -->
+<!-- dtd: Document Type Definition -->
+
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+<!-- hibernate built in properties -->
+
+<session-factory>
+  <property name="hibernate.connection.autocommit">true</property>
+
+<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+
+<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/wipro2025</property>
+
+<property name="hibernate.connection.username">root</property>
+
+<property name="hibernate.connection.password">Deepu@123</property>
+
+<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+
+<!-- The possible values for hbm2ddl.auto:
+**create
+**validate
+**update(If the value is update then, Hibernate checks for the table and columns.
+ If a table doesn’t exist then it creates 
+new tables 
+and where as if a column doesn’t exist it creates new columns for it.)
+**create-drop -->
+
+<property name="hibernate.hbm2ddl.auto">update</property>
+
+
+
+<!-- show_sql. Enable the logging of all the generated SQL statements to the 
+console -->
+<!--  true tells hibernate to Write all SQL statements to console window.  -->
+<property name="hibernate.show_sql">true</property>
+
+
+
+<!-- mapping the POJO class/ENTITY CLASS to the MYSQL TABLE -->
+
+<!-- pojo class annotation files -->
+<mapping class="WIPROHibernateDemo.HQLDemo"/>
+
+<!-- one to many uni directional relationship mapping -->
+<mapping class="mypojos.VendorPOJO"/>
+<mapping class="mypojos.CustomerPojo"/>
+
+<!-- one to many bidirectional relationship mapping -->
+<mapping class="mypojos.VendorBidirectionalPOJO"/>
+<mapping class="mypojos.CustomerBidirectionalPOJO"/>
+
+</session-factory>
+
+</hibernate-configuration>
