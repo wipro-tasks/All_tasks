@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5 Multimedia Lab</title>
+</head>
+<body>
+    <h2>Video Example</h2>
+    <video width="320" height="240" controls poster="poster.jpg">
+        <source src="sample.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <h2>Audio Example</h2>
+    <audio controls loop>
+        <source src="sample.mp3" type="audio/mpeg">
+        Your browser does not support the audio tag.
+    </audio>
+
+    <h2>Embed PDF</h2>
+    <embed src="document.pdf" type="application/pdf" width="600" height="400">
+    <p>
+        Your browser does not support embedding PDFs. 
+        <a href="document.pdf">Download the PDF</a>.
+    </p>
+
+    <h2>Iframe Example</h2>
+    <iframe src="demo.html" width="600" height="400" title="Iframe Example"></iframe>
+
+    <h2>SVG Example</h2>
+    <svg width="200" height="100">
+        <rect width="200" height="100" style="fill:blue;"></rect>
+        <text x="50" y="55" font-size="20" fill="white">Hello SVG</text>
+    </svg>
+</body>
+</html>

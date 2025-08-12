@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Lab — Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        figure {
+            margin: 0;
+            text-align: center;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+        .notes {
+            grid-column: span 1;
+        }
+        .submit-section {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Image Lab — Gallery</h1>
+        <p>Practice with <code>&lt;img&gt;</code>, srcset, <code>&lt;picture&gt;</code>, SVG, and accessibility</p>
+    </header>
+
+    <main>
+        <h2>Responsive Image Gallery</h2>
+        <div class="gallery">
+            <figure>
+                <img src="basmati.jpg" alt="Basmati rice — 5 kg bag">
+                <figcaption>Basmati rice — 5 kg bag.</figcaption>
+            </figure>
+            <figure>
+                <img src="assorted snacks box.webp" alt="Assorted Snacks Box">
+                <figcaption>Assorted Snacks Box <br>(WebP served when supported).</figcaption>
+            </figure>
+            <div class="notes">
+                <h3>Notes</h3>
+                <p>Use <code>srcset</code> and <code>&lt;picture&gt;</code> to reduce bandwidth and serve modern formats. Add <code>loading="lazy"</code> to defer-screen images.</p>
+            </div>
+            <figure>
+                <img src="truck.svg" alt="Delivery truck">
+                <figcaption>Delivery truck (SVG inline with accessible title/desc).</figcaption>
+            </figure>
+            <figure>
+                <img src="divider.png" alt="" aria-hidden="true">
+                <figcaption>Decorative divider <br>(not read by screen readers).</figcaption>
+            </figure>
+            <figure>
+                <img src="map.png" usemap="#storemap" alt="Store layout">
+                <figcaption>Click a section to navigate to that aisle (image map)</figcaption>
+                <map name="storemap">
+                    <area shape="rect" coords="10,10,80,80" href="#rice" alt="Rice aisle">
+                    <area shape="rect" coords="100,10,170,80" href="#snacks" alt="Snacks aisle">
+                </map>
+            </figure>
+        </div>
+
+        <div class="submit-section">
+            <h3>Submit Lab</h3>
+            <button type="submit">Submit Lab</button>
+        </div>
+    </main>
+</body>
+</html>

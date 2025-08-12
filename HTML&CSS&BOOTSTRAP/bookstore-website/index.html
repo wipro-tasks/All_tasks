@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BookWorld - Your Online Bookstore</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+
+        h1, h2 {
+            color: #2c3e50;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #999;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        ul, ol {
+            margin-bottom: 20px;
+        }
+
+        iframe {
+            width: 100%;
+            height: 315px;
+            border: none;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Title & Heading -->
+    <h1>BookWorld - Your Online Bookstore</h1>
+
+    <!-- Banner Image & Description -->
+    <div class="section">
+        <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f" alt="Books Banner" width="100%">
+        <p>BookWorld is a premier online bookstore. There's a compendium of books for every reader, from fiction to science, and best-sellers to rare finds.</p>
+    </div>
+
+    <!-- Book Categories Table -->
+    <div class="section">
+        <h2>Book Categories</h2>
+        <table>
+            <tr>
+                <th>Category</th>
+                <th>Number of Books</th>
+                <th>Top Author</th>
+            </tr>
+            <tr>
+                <td>Fiction</td>
+                <td>2,345</td>
+                <td>J.K. Rowling</td>
+            </tr>
+            <tr>
+                <td>Non-Fiction</td>
+                <td>1,789</td>
+                <td>Malcolm Gladwell</td>
+            </tr>
+            <tr>
+                <td>Children's</td>
+                <td>1,234</td>
+                <td>Roald Dahl</td>
+            </tr>
+            <tr>
+                <td>Science</td>
+                <td>980</td>
+                <td>Stephen Hawking</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Best-Sellers and Upcoming Releases -->
+    <div class="section">
+        <h2>Best-Sellers</h2>
+        <ol>
+            <li>The Great Gatsby by F. Scott Fitzgerald</li>
+            <li>To Kill a Mockingbird by Harper Lee</li>
+            <li>1984 by George Orwell</li>
+            <li>The Catcher in the Rye by J.D. Salinger</li>
+            <li>The Hobbit by J.R.R. Tolkien</li>
+        </ol>
+
+        <h2>Upcoming Releases</h2>
+        <ul>
+            <li>The Midnight Library</li>
+            <li>Project Hail Mary</li>
+            <li>The Four Winds</li>
+            <li>Klara and the Sun</li>
+            <li>The Lincoln Highway</li>
+        </ul>
+    </div>
+
+    <!-- Book Preview -->
+    <div class="section">
+        <h2>Book Preview</h2>
+        
+        <iframe src="https://www.youtube.com/embed/5qap5aO4i9A" allowfullscreen></iframe>
+
+    </div>
+
+    <!-- Registration Form -->
+    <div class="section">
+        <h2>Newsletter Signup</h2>
+        <form>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name">
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email">
+
+            <label for="genre">Favorite Genre</label>
+            <select id="genre" name="genre">
+                <option>Fiction</option>
+                <option>Non-Fiction</option>
+                <option>Science</option>
+                <option>Children's</option>
+            </select>
+
+            <label for="comments">Comments</label>
+            <textarea id="comments" name="comments" rows="4"></textarea>
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <!-- Links Section -->
+    <div class="section">
+        <h2>Useful Links</h2>
+        <ul>
+            <li><a href="https://www.goodreads.com" target="_blank">Goodreads</a></li>
+            <li><a href="https://www.amazon.com/books" target="_blank">Amazon Books</a></li>
+            <li><a href="https://www.bookbub.com/welcome" target="_blank">BookBub</a></li>
+        </ul>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="section">
+        <h2>Contact Us</h2>
+        <p>
+            BookWorld Inc.<br>
+            123 Book Street, Readerville, 45678<br>
+            Phone: (123) 456-7890<br>
+            Email: contact@bookworld.com
+        </p>
+    </div>
+
+</body>
+</html>
