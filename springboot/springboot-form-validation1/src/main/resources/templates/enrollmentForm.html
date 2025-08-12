@@ -1,0 +1,6 @@
+<form th:action="@{/enroll}" th:object="${student}" method="post">
+  <input type="text" th:field="*{firstName}"/> <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span>
+  <input type="text" th:field="*{lastName}"/> <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span>
+  <!-- Continue for all fields, each with th:errors -->
+  <button type="submit">Register</button>
+</form>

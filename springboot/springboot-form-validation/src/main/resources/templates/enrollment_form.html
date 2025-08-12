@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Student Enrollment Form</title>
+</head>
+<body>
+<h2>Enrollment Form</h2>
+<form th:action="@{/enroll}" th:object="${student}" method="post">
+
+    First Name: <input type="text" th:field="*{firstName}"/> 
+    <div th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></div>
+
+    <br/>Last Name: <input type="text" th:field="*{lastName}"/>
+    <div th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></div>
+
+    <br/>Sex:
+    <input type="radio" th:field="*{sex}" value="Male"/>Male
+    <input type="radio" th:field="*{sex}" value="Female"/>Female
+    <div th:if="${#fields.hasErrors('sex')}" th:errors="*{sex}"></div>
+
+    <br/>Date of birth: <input type="text" th:field="*{dateOfBirth}"/>
+    <div th:if="${#fields.hasErrors('dateOfBirth')}" th:errors="*{dateOfBirth}"></div>
+
+    <br/>Email: <input type="text" th:field="*{email}"/>
+    <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+
+    <br/>Section:
+    <div th:each="sec : ${sections}">
+        <input type="radio" th:field="*{section}" th:value="${sec}"/> <span th:text="${sec}"></span>
+    </div>
+    <div th:if="${#fields.hasErrors('section')}" th:errors="*{section}"></div>
+
+    <br/>Country:
+    <select th:field="*{country}">
+        <option value="">--SELECT--</option>
+        <option th:each="country : ${countries}" th:value="${country}" th:text="${country}"></option>
+    </select>
+    <div th:if="${#fields.hasErrors('country')}" th:errors="*{country}"></div>
+
+    <br/>First Attempt? <input type="checkbox" th:field="*{firstAttempt}"/>
+
+    <br/>Subjects:
+    <select multiple th:field="*{subjects}">
+        <option th:each="sub : ${subjects}" th:value="${sub}" th:text="${sub}"></option>
+    </select>
+    <div th:if="${#fields.hasErrors('subjects')}" th:errors="*{subjects}"></div>
+
+    <br/><button type="submit">Register</button>
+</form>
+</body>
+</html>
