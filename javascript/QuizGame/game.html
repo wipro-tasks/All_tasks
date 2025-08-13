@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz Game</title>
+</head>
+<body>
+    <h1>Simple Quiz Game</h1>
+    <script>
+        alert("Welcome to the Quiz Game!");
+        const userName = prompt("What is your name?");
+        const isReady = confirm(`Hi ${userName}, are you ready to take the quiz now?`);
+        if (isReady) {
+            const ans = prompt("What is the capital of France?\nA. Paris\nB. Madrid\nC. Berlin\nD. Rome");
+            if (ans.toLowerCase() === "c" || ans.toLowerCase() === "paris") {
+                alert("Correct answer");
+            } else {
+                alert("Wrong answer! The correct answer is C. Paris.");
+            }
+        } else {
+            alert("No worries, betterluck next time!");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Income Tax Calculator (Multiple Callbacks)</title>
+</head>
+<body>
+<h2>Income Tax Calculator (Multiple Callbacks)</h2>
+
+  <form id="taxForm">
+    <label>Name: <input type="text" id="name" required></label><br><br>
+    <label>PAN: <input type="text" id="pan" required></label><br><br>
+    <label>Annual Income: <input type="number" id="income" required></label><br><br>
+    <button type="submit">Calculate Tax</button>
+  </form>
+<hr>
+  <div id="result"></div>
+<script>
+    const taxRecords = [];
+    function calculateTax(name, pan, income, callback) {
+      let tax = 0;
+    if (income <= 250000) {
+        tax = 0;
+      } else if (income <= 500000) {
+        tax = (income - 250000) * 0.05;
+      } else if (income <= 1000000) {
+        tax = (250000 * 0.05) + (income - 500000) * 0.20;
+      } else {
+        tax = (250000 * 0.05) + (500000 * 0.20) + (income - 1000000) * 0.30;
+      }
+    tax = Math.round(tax);
+      callback({ name, pan, income, tax });
+    }
+    function logToConsole(record) {
+      console.log("Tax Record:", record);
+    }
+    function displayOnPage(record) {
+      const resultDiv = document.getElementById("result");
+      resultDiv.innerHTML = `
+        <h3>Result:</h3>
+        <p><strong>Name:</strong> ${record.name}</p>
+        <p><strong>PAN:</strong> ${record.pan}</p>
+        <p><strong>Annual Income:</strong> ₹ ${record.income}</p>
+        <p><strong>Calculated Tax:</strong> ₹ ${record.tax}</p>
+      `;
+    }
+    function saveToRecords(record) {
+      taxRecords.push(record);
+    }
+    document.getElementById("taxForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const name = document.getElementById("name").value.trim();
+      const pan = document.getElementById("pan").value.trim().toUpperCase();
+      const income = parseFloat(document.getElementById("income").value);
+      calculateTax(name, pan, income, function (record) {
+        logToConsole(record);
+        displayOnPage(record);
+        saveToRecords(record);
+      });
+    });
+  </script>
+
+</body>
+</html>

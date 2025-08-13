@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RTO Vehicle Registration</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .progress { height: 25px; }
+    .toast-container { position: fixed; top: 20px; right: 20px; }
+  </style>
+</head>
+<body class="bg-light">
+
+<div class="container mt-4 mb-5">
+  <h2 class="text-center mb-4">RTO Vehicle Registration Form</h2>
+  <div class="progress mb-4">
+    <div id="formProgress" class="progress-bar" role="progressbar" style="width: 0%;">0%</div>
+  </div>
+  <form id="rtoForm" class="needs-validation" novalidate>
+    <div class="accordion" id="formAccordion">
+      <div class="accordion-item">
+        <h2 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#ownerSection">1. Owner Details</button></h2>
+        <div id="ownerSection" class="accordion-collapse collapse show" data-bs-parent="#formAccordion">
+          <div class="accordion-body row g-3">
+            <div class="col-md-6">
+              <label class="form-label">Full Name</label>
+              <input type="text" class="form-control" required>
+              <div class="invalid-feedback">Name is required.</div>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Email</label>
+              <input type="email" class="form-control" required>
+              <div class="invalid-feedback">Enter a valid email.</div>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Mobile (India)</label>
+              <input type="tel" pattern="^[6-9]\d{9}$" class="form-control" required>
+              <div class="invalid-feedback">Enter a valid 10-digit Indian mobile number.</div>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Date of Birth</label>
+              <input type="date" class="form-control" id="dob" required>
+              <div class="invalid-feedback">Must be 18 or older.</div>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Aadhaar</label>
+              <input type="text" pattern="\d{12}" class="form-control" required>
+              <div class="invalid-feedback">Enter a valid 12-digit Aadhaar.</div>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">PAN</label>
+              <input type="text" pattern="[A-Z]{5}[0-9]{4}[A-Z]" class="form-control" required>
+              <div class="invalid-feedback">Enter valid PAN (e.g., ABCDE1234F).</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#addressSection">2. Address</button></h2>
+        <div id="addressSection" class="accordion-collapse collapse" data-bs-parent="#formAccordion">
+          <div class="accordion-body row g-3">
+            <div class="col-md-8">
+              <label class="form-label">Address Line</label>
+              <input type="text" class="form-control" required>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">City</label>
+              <input type="text" class="form-control" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">State</label>
+              <select class="form-select" required>
+                <option value="">Choose...</option>
+                <option>Tamil Nadu</option>
+                <option>Maharashtra</option>
+                <option>Karnataka</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">PIN Code</label>
+              <input type="text" pattern="\d{6}" class="form-control" required>
+              <div class="invalid-feedback">6-digit PIN required.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#vehicleSection">3. Vehicle Details</button></h2>
+        <div id="vehicleSection" class="accordion-collapse collapse" data-bs-parent="#formAccordion">
+          <div class="accordion-body row g-3">
+            <div class="col-md-6">
+              <label class="form-label">Registration No.</label>
+              <input type="text" class="form-control" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Class</label>
+              <select class="form-select" required>
+                <option value="">Select</option>
+                <option>LMV</option>
+                <option>HMV</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Fuel Type</label><br>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="fuel" required>
+                <label class="form-check-label">Petrol</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="fuel" required>
+                <label class="form-check-label">Diesel</label>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Make / Model</label>
+              <input type="text" class="form-control" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Chassis No.</label>
+              <input type="text" class="form-control" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Engine No.</label>
+              <input type="text" class="form-control" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Year of Manufacture</label>
+              <input type="number" min="1950" max="2025" class="form-control" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Purchase Date</label>
+              <input type="date" class="form-control" id="purchaseDate" required>
+              <div class="invalid-feedback">Cannot be in the future.</div>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Color</label>
+              <input type="text" class="form-control" required>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#complianceSection">4. Compliance</button></h2>
+        <div id="complianceSection" class="accordion-collapse collapse" data-bs-parent="#formAccordion">
+          <div class="accordion-body row g-3">
+            <div class="col-md-6">
+              <label class="form-label">Emission Norm</label>
+              <select class="form-select" required>
+                <option value="">Select</option>
+                <option>BS-III</option>
+                <option>BS-IV</option>
+                <option>BS-VI</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Insurance Policy No.</label>
+              <input type="text" class="form-control" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Insurer</label>
+              <input type="text" class="form-control" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Insurance Expiry</label>
+              <input type="date" class="form-control" id="insuranceExpiry" required>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#uploadSection">5. Uploads</button></h2>
+        <div id="uploadSection" class="accordion-collapse collapse" data-bs-parent="#formAccordion">
+          <div class="accordion-body row g-3">
+            <div class="col-md-6">
+              <label class="form-label">ID Proof (PDF/JPG/PNG ≤ 2 MB)</label>
+              <input type="file" class="form-control" accept=".pdf,.jpg,.jpeg,.png" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Insurance Copy</label>
+              <input type="file" class="form-control" accept=".pdf,.jpg,.jpeg,.png" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Vehicle Image (optional)</label>
+              <input type="file" class="form-control" accept=".jpg,.jpeg,.png">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#declarationSection">6. Declarations</button></h2>
+        <div id="declarationSection" class="accordion-collapse collapse" data-bs-parent="#formAccordion">
+          <div class="accordion-body">
+            <div class="form-check mb-3">
+              <input class="form-check-input" type="checkbox" id="agreeTerms" required>
+              <label class="form-check-label">I accept the terms & conditions.</label>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">What is 5 + 3?</label>
+              <input type="text" class="form-control" id="captchaAnswer" required>
+              <div class="invalid-feedback">Please answer the CAPTCHA.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="text-center mt-4">
+      <button type="submit" class="btn btn-primary" id="submitBtn" disabled>Submit Application</button>
+    </div>
+  </form>
+</div>
+<div class="toast-container">
+  <div class="toast align-items-center text-bg-success" id="successToast">
+    <div class="d-flex">
+      <div class="toast-body">Application submitted successfully!</div>
+      <button type="button" class="btn-close me-2" data-bs-dismiss="toast"></button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  const form = document.getElementById('rtoForm');
+  const progressBar = document.getElementById('formProgress');
+  const toast = new bootstrap.Toast(document.getElementById('successToast'));
+  const submitBtn = document.getElementById('submitBtn');
+  form.addEventListener('input', () => {
+    let validFields = form.querySelectorAll(':valid').length;
+    let totalFields = form.querySelectorAll('input, select').length;
+    let percent = Math.round((validFields / totalFields) * 100);
+    progressBar.style.width = percent + '%';
+    progressBar.innerText = percent + '%';
+
+    const captcha = document.getElementById('captchaAnswer').value.trim();
+    const terms = document.getElementById('agreeTerms').checked;
+
+    submitBtn.disabled = !(form.checkValidity() && captcha === '8' && terms);
+  });
+
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    if (form.checkValidity() && document.getElementById('captchaAnswer').value === '8') {
+      toast.show();
+      form.classList.add('was-validated');
+    } else {
+      form.classList.add('was-validated');
+    }
+  });
+  document.getElementById('dob').addEventListener('change', function () {
+    const dob = new Date(this.value);
+    const today = new Date();
+    const age = today.getFullYear() - dob.getFullYear();
+    this.setCustomValidity(age < 18 ? 'Must be 18+' : '');
+  });
+
+  document.getElementById('purchaseDate').addEventListener('change', function () {
+    const selected = new Date(this.value);
+    this.setCustomValidity(selected > new Date() ? 'Cannot be in the future' : '');
+  });
+
+  document.getElementById('insuranceExpiry').addEventListener('change', function () {
+    const selected = new Date(this.value);
+    this.setCustomValidity(selected < new Date() ? 'Expiry must be today or future' : '');
+  });
+</script>
+</body>
+</html>

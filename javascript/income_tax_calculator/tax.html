@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Income Tax Calculator</title>
+</head>
+<body>
+    <h1>Income Tax Calculator</h1>
+    <script>
+        function isValidPAN(pan) {
+            return /^[A-Z]{5}[0-9]{4}[A-Z]$/.test(pan);
+        }
+        function calculateAge(dob) {
+            const birthDate=new Date(dob);
+            const today=new Date();
+            let age=today.getFullYear()-birthDate.getFullYear();
+            const monthDiff=today.getMonth()-birthDate.getMonth();
+            if(monthDiff<0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+            return age;
+        }
+        function calculateTax(income) {
+            let tax = 0;
+            if (income<=250000) {
+                tax=0;
+            } else if (income<=500000) {
+                tax=0.05 *(income - 250000);
+            } else if (income<=1000000) {
+                tax = 0.05*250000+0.20*(income - 500000);
+            } else {
+                tax =0.05*250000+0.20*500000+0.30*(income - 1000000);
+            }
+            return Math.round(tax);
+        }
+        const name = prompt("Enter your full name:").toUpperCase();
+        let pan = prompt("Enter your PAN number (10 characters, e.g. ABCDE1234F):").toUpperCase();
+        while (!isValidPAN(pan)) {
+            pan = prompt("Invalid PAN. please Enter a valid PAN number(e.g. ABCDE1234F):").toUpperCase();
+        }
+
+        const dobInput = prompt("Enter your Date of Birth (YYYY-MM-DD):");
+        const age = calculateAge(dobInput);
+
+        const incomeInput = prompt("Enter Annual Income in ₹:");
+        const income = Number(incomeInput);
+
+        if (isNaN(income) || income < 0) {
+            alert("Invalid income entered.");
+        } else {
+            const tax = calculateTax(income);
+            const result = `Name: ${name}
+PAN: ${pan}
+Age: ${age} years
+Annual Income: ${income}₹
+Calculated Tax: ${tax}₹`;
+
+            alert(result);
+        }
+    </script>
+</body>
+</html>

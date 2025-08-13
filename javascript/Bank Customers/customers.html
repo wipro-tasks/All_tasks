@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bank Customer Manager</title>
+</head>
+<body>
+    <h1>Bank Customer Manager</h1>
+    <script>
+        const count = parseInt(prompt("How many customers do you want to register?"));
+        const customers = [];
+        for(let i = 0; i < count; i++) {
+            const name = prompt(`Enter name of customer ${i + 1}:`);
+            customers.push(name);
+        }
+        let output = `Original Customers: ${customers.join(", ")}\nCustomers using for...of:\n`;
+        for (const customer of customers) {
+            output += customer + "\n";
+        }
+        output += "Customer IDs using for...in:\n";
+        for (const index in customers) {
+            output += index + "\n";
+        }
+        customers.push("avika");
+        output += `After push('Avika'): ${customers.join(", ")}\n`;
+        customers.pop();
+        output += `After pop(): ${customers.join(", ")}\n`;
+        customers.splice(1, 0, "akarsh");
+        output += `After insert 'akarsh' at position 1: ${customers.join(", ")}\n`;
+        customers.splice(2, 1);
+        output += `After delete at position 2: ${customers.join(", ")}\n`;
+        output += `Final Customers: ${customers.join(", ")}`;
+        alert(output);
+    </script>
+</body>
+</html>

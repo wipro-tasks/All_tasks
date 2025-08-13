@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sports Team Player Details</title>
+</head>
+<body>
+<h2>Sports Team Player Details</h2>
+  <div id="output"></div>
+    <script>
+    const player1 = {
+      name: "Virat Kohli",
+      age: 36,
+      sport: "Cricket",
+      stats: {
+        matches: 500,
+        runs: 25000,
+        average: 57.2
+      }
+    };
+    const player2 = {
+      name: "Lionel Messi",
+      age: 38,
+      sport: "Football",
+      stats: {
+        matches: 800,
+        goals: 720,
+        assists: 300
+      }
+    };
+    const players = [player1, player2];
+    const outputDiv = document.getElementById("output");
+    function formatPlayer({ name, sport, stats }) {
+      let message = `<strong>Player ${name} plays ${sport}.</strong><br>Matches: ${stats.matches}`;
+
+      if (sport === "Cricket") {
+        message += ` | Runs: ${stats.runs} | Batting Average: ${stats.average}`;
+      } else if (sport === "Football") {
+        message += ` | Goals: ${stats.goals} | Assists: ${stats.assists}`;
+      }
+
+      return `<p>${message}</p>`;
+    }
+    for (const player of players) {
+      outputDiv.innerHTML += formatPlayer(player);
+    }
+  </script>
+
+</body>
+</html>

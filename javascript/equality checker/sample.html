@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Equality & Inequality Checker</title>
+</head>
+<body>
+    <h1>Equality & Inequality Checker</h1>
+
+    <script>
+        const val1 = prompt("Enter first value:");
+        const val2 = prompt("Enter second value:");
+        const val1Type = typeof val1;
+        const val2Type = typeof val2;
+        const val1Number = Number(val1);
+        const val2Number = Number(val2);
+        const isEqual = val1 == val2;
+        const isStrictEqual = val1 === val2;
+        const isNotEqual = val1 != val2;
+        const isStrictNotEqual = val1 !== val2;
+        let explanation = `First Value: ${val1} (${val1Type})\n`;
+        explanation += `Second Value: ${val2} (${val2Type})\n\n`;
+        explanation += `Using == : ${isEqual} → Equality ignores type\n`;
+        explanation += `Using === : ${isStrictEqual} → Strict equality checks type too\n`;
+        explanation += `Using != : ${isNotEqual} → Checks for loose inequality\n`;
+        explanation += `Using !== : ${isStrictNotEqual} → Strict inequality because types differ\n`;
+        alert(explanation);
+    </script>
+</body>
+</html>
