@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 const Phone = () => {
+  //useState is used to create a phone object with brand, model, and price
   const [phone, setPhone] = useState({
     brand: "Apple",
     model: "iPhone 16",
@@ -9,6 +10,7 @@ const Phone = () => {
 
   
   const updatePrice = () => {
+    //spread operator to keep other properties (brand, model) unchanged
     setPhone({ ...phone, price: phone.price + 5000 }); 
   };
 

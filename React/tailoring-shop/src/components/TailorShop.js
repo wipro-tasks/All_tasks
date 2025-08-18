@@ -31,7 +31,7 @@ const TailorShop = () => {
 
   return (
     <div className="container my-4">
-      <h2 className="text-center mb-4">👗 Tailoring Shop Services</h2>
+      <h2 className="text-center mb-4">Tailoring Shop Services</h2>
       <div className="row">
         {services.map((service) => (
           <ServiceCard key={service.id} service={service} />

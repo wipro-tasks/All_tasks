@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-
+// Created a functional component named Electronics
 const Electronics = () => {
-  // Separate useState hooks
-  const [name] = useState("Laptop");
+  // useState hook to store the name of the electronic item 
+  const [name] = useState("Laptop"); //store the name of the electronic item
   const [brand, setBrand] = useState("Dell");
   const [price, setPrice] = useState(55000);
 

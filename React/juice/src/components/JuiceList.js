@@ -2,7 +2,7 @@ import React from "react";
 import Juice from "./Juice";
 
 const JuiceList = () => {
-  
+//Declaring an array of juice objects with id, name,price  
   const juices = [
     { id: 1, name: "Grape Juice", price: 60 },
     { id: 2, name: "Musk melon Juice", price: 80 },
@@ -21,9 +21,9 @@ const JuiceList = () => {
             <th>Price (₹)</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody> {/* Looping through the juices array and rendering a Juice component for each item */}
           {juices.map((juice) => (
-            <Juice key={juice.id} id={juice.id} name={juice.name} price={juice.price} />
+            <Juice key={juice.id} id={juice.id} name={juice.name} price={juice.price} /> //passing juice ID,name,price as a properties
           ))}
         </tbody>
       </table>

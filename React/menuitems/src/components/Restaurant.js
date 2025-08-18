@@ -11,6 +11,7 @@ class Restaurant extends Component {
         <p><strong>Open Hours:</strong> 10:00 AM - 11:00 PM</p>
 
         <hr />
+        {/* Rendering multiple MenuItem components with different props */}
         <MenuItem name="Pizza" price={250} category="Main Course" available="Yes" />
         <MenuItem name="Burger" price={120} category="Snack" available="Yes" />
         <MenuItem name="Pasta" price={180} category="Main Course" available="No" />

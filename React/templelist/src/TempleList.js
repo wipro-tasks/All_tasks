@@ -1,6 +1,7 @@
 import React from "react";
 
 const TempleList = () => {
+  // Creates an array of temple with id,name,location,deities
   const temples = [
     {
       id: 1,
@@ -35,12 +36,14 @@ const TempleList = () => {
           </tr>
         </thead>
         <tbody>
+          {/* Looping through the temples array to render each temple's data */}
           {temples.map((temple) => (
             <tr key={temple.id}>
               <td>{temple.name}</td>
               <td>{temple.location}</td>
               <td>
                 <ul>
+                  {/* Looping through deities array to show each deity in a list item */}
                   {temple.deities.map((deity, index) => (
                     <li key={index}>{deity}</li>
                   ))}
