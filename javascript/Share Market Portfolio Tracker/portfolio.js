@@ -1,54 +1,55 @@
 function createPortfolioTracker() {
-  const portfolio = [];
-
-  function buyShare(company, quantity, price) {
-    const index = portfolio.findIndex(share => share.company === company);
-    if (index !== -1) {
-      portfolio[index].quantity += quantity;
-      portfolio[index].price = price;
-    } else {
-      portfolio.push({ company, quantity, price });
+    let portfolio = [];
+    function buyShare(company, quantity, pricePerShare) {
+        portfolio.push({ company, quantity, pricePerShare });
+        console.log(`Bought ${quantity} shares of ${company} at ₹${pricePerShare} each`);
     }
-    console.log(`Bought ${quantity} shares of ${company} at ₹${price} each.`);
-  }
-
-  function sellShare(company, quantity) {
-    const index = portfolio.findIndex(share => share.company === company);
-    if (index === -1) {
-      console.log(`No shares of ${company} found to sell.`);
-      return;
+    function sellShare(company, quantity) {
+        let found = false;
+        for (let share of portfolio) {
+            if (share.company === company) {
+                if (share.quantity >= quantity) {
+                    share.quantity -= quantity;
+                    console.log(`Sold ${quantity} shares of ${company}`);
+                } else {
+                    console.log(`Not enough shares to sell for ${company}`);
+                }
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            console.log(`No shares found for ${company}`);
+        }
     }
-    if (portfolio[index].quantity < quantity) {
-      console.log(`Not enough shares of ${company} to sell.`);
-      return;
+    function totalValue() {
+        let total = 0;
+        for (let share of portfolio) {
+            total += share.quantity * share.pricePerShare;
+        }
+        console.log(`Portfolio Value: ₹${total}`);
     }
-    portfolio[index].quantity -= quantity;
-    console.log(`Sold ${quantity} shares of ${company}.`);
-    if (portfolio[index].quantity === 0) {
-      portfolio.splice(index, 1);
-    }
-  }
-
-  function totalValue() {
-    let total = 0;
-    for (const share of portfolio) {
-      total += share.quantity * share.price;
-    }
-    return total;
-  }
-
-  return {
-    buyShare,
-    sellShare,
-    totalValue,
-  };
+    return {
+        buyShare,
+        sellShare,
+        totalValue
+    };
 }
-
-// Test the portfolio tracker
 const myPortfolio = createPortfolioTracker();
+myPortfolio.buyShare("wipro", 10, 3900);
+myPortfolio.buyShare("Infosys", 5, 1900);
+myPortfolio.sellShare("wipro", 2);
+myPortfolio.totalValue();
 
-myPortfolio.buyShare('TCS', 10, 3500);
-myPortfolio.buyShare('Infosys', 5, 1500);
-myPortfolio.sellShare('TCS', 3);
 
-console.log(`Portfolio Value: ₹${myPortfolio.totalValue()}`);
+
+//index.html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Portfolio Tracker</title>
+</head>
+<body>
+    <script src="External.js"></script>
+</body>
+</html>
